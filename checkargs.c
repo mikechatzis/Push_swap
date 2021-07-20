@@ -6,7 +6,7 @@
 /*   By: mchatzip <mchatzip@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 13:38:50 by mchatzip          #+#    #+#             */
-/*   Updated: 2021/07/16 10:46:47 by mchatzip         ###   ########.fr       */
+/*   Updated: 2021/07/20 15:19:31 by mchatzip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,24 @@ char	**parseargs(char **s)
 {
 	char	**p;
 	char	*cat;
+	char	*temp;
 
-	cat = ft_strjoin(s[0], " ");
-	cat = ft_strjoin(cat, s[1]);
+	temp = ft_strjoin(s[0], " ");
+	cat = ft_strjoin(temp, s[1]);
+	free(temp);
 	if (s[2])
+	{
+		free(cat);
 		return (s);
-	else
+	}
+	else if (ft_strchr(s[1], ' '))
+	{
 		p = ft_split(cat, ' ');
+		free(cat);
+		return (p);
+	}
 	free(cat);
-	return (p);
+	return (s);
 }
 
 int	errorcheck(int argc, char **s)

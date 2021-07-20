@@ -6,7 +6,7 @@
 #    By: mchatzip <mchatzip@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/21 14:41:30 by mchatzip          #+#    #+#              #
-#    Updated: 2021/07/15 12:40:30 by mchatzip         ###   ########.fr        #
+#    Updated: 2021/07/19 14:15:13 by mchatzip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,10 @@ OBJ		= ${SRC:.c=.o}
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
-			$(AR) $(NAME) $(OBJ)
+$(NAME):	$(OBJ)			
 
 clean:		
-			$(RM) *.o a.out *.a
+			$(RM) *.o
 
 fclean:		clean
 			$(RM) $(NAME)

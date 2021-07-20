@@ -6,7 +6,7 @@
 #    By: mchatzip <mchatzip@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/09 14:49:48 by mchatzip          #+#    #+#              #
-#    Updated: 2021/07/16 09:56:17 by mchatzip         ###   ########.fr        #
+#    Updated: 2021/07/20 20:16:48 by mchatzip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,11 @@ NAME       = push_swap
 
 LIBFT_PATH = libft/
 
-LIBFT_LIB  = libft.a
-
 SRCS_FILES = checkargs.c processargs.c utils.c utils2.c sort_binary.c \
-			utils3.c utils4.c utils5.c push_swap.c\
+			utils3.c utils4.c utils5.c push_swap.c
 			 
-SRCS_OBJS  = ${SRCS_FILES:.c=.o}
+SRCS_OBJS  = checkargs.o processargs.o utils.o utils2.o sort_binary.o \
+			utils3.o utils4.o utils5.o push_swap.o
 
 CC         = gcc
 
@@ -31,20 +30,18 @@ AR         = ar crs
 
 LIBFT_OBJS    = ${LIBFT_PATH}*.o
 
-LIBFTMAKE    = $(MAKE) -C ${LIBFT_PATH}
+LIBFTMAKE    = make -C ${LIBFT_PATH}
 
-all:				${NAME}
-
-${NAME}:    ${SRCS_OBJS} pmake
-			${CC} -o ${NAME} ${SRCS_OBJS} ${LIBFT_OBJS}
-			
+all:		pmake ${NAME}
+${NAME}:     ${SRCS_OBJS} 
+		 ${CC} ${CFLAGS} -o ${NAME} ${SRCS_OBJS} ${LIBFT_OBJS};
 
 pmake:
 			${LIBFTMAKE}
 
 clean:
-			make -C ${LIBFT_PATH} clean  
-			${RM} ${SRCS_OBJS} *.a
+			make clean -C ${LIBFT_PATH}   
+			${RM} ${SRCS_OBJS}
 
 fclean: 	clean
 			${RM} ${NAME}

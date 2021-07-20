@@ -6,7 +6,7 @@
 /*   By: mchatzip <mchatzip@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 14:42:08 by mchatzip          #+#    #+#             */
-/*   Updated: 2021/07/15 13:42:44 by mchatzip         ###   ########.fr       */
+/*   Updated: 2021/07/20 14:59:14 by mchatzip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int		ft_strcmp(char *s1, char *s2);
 long	ft_atol(const char *str);
 int		*ft_memcpyint(int *str, const int *c, size_t n);
 int		*sortintarr(int *as, int arglen);
-int		*setalpha(char **s, int arglen);
+void	setalpha(char **s, int *a);
 int		*sortalpha(int *a, int arglen);
 int		*matchalpha(int arglen);
-int		*asignalpha(int *a, int *aso, int *asi, int arglen);
-int		*allaboutalpha(char **argv, int arglen);
+void	asignalpha(int *a, int *aso, int *asi, int arglen);
+void	allaboutalpha(char **argv, int arglen);
 size_t	ft_strstrlen(char **c);
 int		findchr(const char c, const char *str);
 void	freeall(int *asi, int *aso);

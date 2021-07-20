@@ -6,7 +6,7 @@
 /*   By: mchatzip <mchatzip@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 16:10:42 by mchatzip          #+#    #+#             */
-/*   Updated: 2021/07/16 10:49:01 by mchatzip         ###   ########.fr       */
+/*   Updated: 2021/07/20 19:25:09 by mchatzip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,26 @@ int	findchr(const char c, const char *str)
 	return (0);
 }
 
-int	*allaboutalpha(char **argv, int arglen)
+void	allaboutalpha(char **argv, int arglen)
 {
 	int	maxbits;
 	int	*aso;
 	int	*asi;
 	int	*a;
 
-	a = setalpha(argv, arglen);
+	a = malloc(arglen * sizeof(int));
+	setalpha(argv, a);
 	if (alphaissorted(a, arglen))
-		return (a);
+	{	
+		free(a);
+		return ;
+	}
 	aso = sortalpha(a, arglen);
 	asi = matchalpha(arglen);
-	a = asignalpha(a, aso, asi, arglen);
+	asignalpha(a, aso, asi, arglen);
 	maxbits = findmaxbits(asi[arglen - 1]);
 	sort(a, arglen, maxbits);
 	freeall(aso, asi);
-	return (a);
+	free(a);
+	return ;
 }
-
-/*int i = 0; while (i <= 14)
-		printf("%d ", a[i++]);*/

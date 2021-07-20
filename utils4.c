@@ -6,7 +6,7 @@
 /*   By: mchatzip <mchatzip@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 10:15:18 by mchatzip          #+#    #+#             */
-/*   Updated: 2021/07/16 10:29:15 by mchatzip         ###   ########.fr       */
+/*   Updated: 2021/07/19 16:30:26 by mchatzip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,21 @@ void	sort3(int *a)
 
 void	sort4(int *a, int *b)
 {
-	setmin(a);
-	setmax(a);
-	if (a[1] > a[2])
+	if (a[0] < a[1] && a[1] < a[2] && a[3] < a[0])
+		rra(a, 4, 4);
+	else
 	{
-		pb(a, b, 4, 4);
-		pb(a, b, 4, 4);
-		pb(a, b, 4, 4);
-		sb(b);
-		pa(a, b, 4);
-		pa(a, b, 4);
-		pa(a, b, 4);
+		setmin(a);
+		setmax(a);
+		if (a[1] > a[2])
+		{
+			pb(a, b, 4, 4);
+			pb(a, b, 4, 4);
+			pb(a, b, 4, 4);
+			sb(b);
+			pa(a, b, 4);
+			pa(a, b, 4);
+			pa(a, b, 4);
+		}
 	}
 }

@@ -6,24 +6,20 @@
 /*   By: mchatzip <mchatzip@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 15:18:24 by mchatzip          #+#    #+#             */
-/*   Updated: 2021/07/12 16:37:53 by mchatzip         ###   ########.fr       */
+/*   Updated: 2021/07/20 15:14:42 by mchatzip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*setalpha(char **s, int arglen)
+void	setalpha(char **s, int *a)
 {
-	int	*a;
 	int	i;
 
-	a = malloc(arglen * sizeof(int));
-	if (a == NULL)
-		return (NULL);
 	i = 0;
 	while (s[++i])
 		a[i - 1] = ft_atoi(s[i]);
-	return (a);
+	return ;
 }
 
 int	*sortalpha(int *a, int arglen)
@@ -55,7 +51,7 @@ int	*matchalpha(int arglen)
 	return (as);
 }
 
-int	*asignalpha(int *a, int *aso, int *asi, int arglen)
+void	asignalpha(int *a, int *aso, int *asi, int arglen)
 {
 	int	i;
 	int	k;
@@ -64,8 +60,6 @@ int	*asignalpha(int *a, int *aso, int *asi, int arglen)
 	i = 0;
 	k = 0;
 	af = malloc(arglen * sizeof(int));
-	if (af == NULL)
-		return (NULL);
 	while (i < arglen)
 	{
 		while (k < arglen)
@@ -77,7 +71,11 @@ int	*asignalpha(int *a, int *aso, int *asi, int arglen)
 		k = 0;
 		i++;
 	}
-	return (af);
+	i = -1;
+	while (++i < arglen)
+		a[i] = af[i];
+	free(af);
+	return ;
 }
 
 int	alphaissorted(int *a, int arglen)

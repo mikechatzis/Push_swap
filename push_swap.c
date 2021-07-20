@@ -6,7 +6,7 @@
 /*   By: mchatzip <mchatzip@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 15:09:33 by mchatzip          #+#    #+#             */
-/*   Updated: 2021/07/16 10:35:28 by mchatzip         ###   ########.fr       */
+/*   Updated: 2021/07/20 15:23:02 by mchatzip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 
 int	main(int argc, char **argv)
 {
-	int	*a;
-	int	arglen;
+	int		arglen;
+	char	**alargv;
 
 	if (argv[1] == NULL)
-	{
-		write(2, "Error\n", 6);
 		return (-1);
-	}
-	argv = parseargs(argv);
+	alargv = parseargs(argv);
 	arglen = ft_strstrlen(argv) - 1;
-	if (!errorcheck(argc, argv))
-		return (-1);
-	else
+	if (!errorcheck(argc, alargv))
 	{
-		a = allaboutalpha(argv, arglen);
-		free(a);
-	}
+		if (!argv[2] && ft_strchr(argv[1], ' '))
+			free(alargv);
+		return (-1);
+	}	
+	else
+		allaboutalpha(alargv, arglen);
+	if (!argv[2] && ft_strchr(argv[1], ' '))
+		free(alargv);
 	return (1);
 }
